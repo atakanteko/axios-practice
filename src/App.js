@@ -14,7 +14,8 @@ function App() {
     try {
       const resp = await createHttpRequest({
         method: "get",
-        endpoint: "/posts",
+        endpoint: "posts",
+        path: "1",
       });
       setSituations({ ...situations, fullfilled: resp, isPending: false });
     } catch (error) {
@@ -37,9 +38,7 @@ function App() {
   return (
     <div className="App">
       <ul>
-        {situations.fullfilled?.map((post) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
+        <li>{situations.fullfilled?.title}</li>
       </ul>
     </div>
   );
