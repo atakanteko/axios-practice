@@ -21,10 +21,10 @@ function App() {
     try {
       const resp = await createHttpRequest({
         endpoint: "posts",
-        path: 1,
         config: {
-          method: "PUT",
-          data: postRequestData,
+          params: {
+            userId: 2,
+          },
         },
       });
       setSituations({ ...situations, fullfilled: resp, isPending: false });
@@ -48,10 +48,10 @@ function App() {
   return (
     <div className="App">
       <ul>
-        <li>{situations.fullfilled?.title}</li>
-        {/* {situations.fullfilled?.map((item) => (
+        {/* <li>{situations.fullfilled?.title}</li> */}
+        {situations.fullfilled?.map((item) => (
           <li>{item.title}</li>
-        ))} */}
+        ))}
       </ul>
     </div>
   );
