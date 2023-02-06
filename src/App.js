@@ -10,8 +10,9 @@ function App() {
   });
 
   const postRequestData = {
-    title: "foo",
-    body: "bar",
+    id: 1,
+    title: "testtest",
+    body: "testtest",
     userId: 1,
   };
 
@@ -20,8 +21,9 @@ function App() {
     try {
       const resp = await createHttpRequest({
         endpoint: "posts",
+        path: 1,
         config: {
-          method: "POST",
+          method: "PUT",
           data: postRequestData,
         },
       });
