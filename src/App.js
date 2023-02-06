@@ -22,9 +22,6 @@ function App() {
         endpoint: "posts",
         config: {
           method: "GET",
-          params: {
-            userId: 1,
-          },
         },
       });
       setSituations({ ...situations, fullfilled: resp, isPending: false });
