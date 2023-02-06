@@ -9,13 +9,23 @@ function App() {
     error: false,
   });
 
+  const postRequestData = {
+    title: "foo",
+    body: "bar",
+    userId: 1,
+  };
+
   const fetchPosts = async () => {
     setSituations({ ...situations, isPending: true });
     try {
       const resp = await createHttpRequest({
-        method: "get",
         endpoint: "posts",
-        path: "1",
+        config: {
+          method: "GET",
+          params: {
+            userId: 1,
+          },
+        },
       });
       setSituations({ ...situations, fullfilled: resp, isPending: false });
     } catch (error) {
@@ -34,11 +44,14 @@ function App() {
   if (situations.isPending && !situations.fullfilled) {
     return <h1>Loading...</h1>;
   }
-
+  console.log(situations);
   return (
     <div className="App">
       <ul>
-        <li>{situations.fullfilled?.title}</li>
+        {/* <li>{situations.fullfilled?.title}</li> */}
+        {situations.fullfilled?.map((item) => (
+          <li>{item.title}</li>
+        ))}
       </ul>
     </div>
   );
